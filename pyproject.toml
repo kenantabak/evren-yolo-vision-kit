@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evren-yolo-vision-kit"
+version = "0.2.0"
+description = "Lightweight ONNX Runtime and PyTorch inference SDK & CLI for Kenan Tabak's open YOLO26/YOLO11 models on Hugging Face and EVREN."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Kenan Tabak"}]
+dependencies = [
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+    "huggingface-hub>=0.23.0",
+]
+
+[project.optional-dependencies]
+onnx = ["onnxruntime>=1.17.0"]
+torch = ["ultralytics>=8.3.0"]
+ui = ["gradio>=4.44.0", "onnxruntime>=1.17.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+evren-vision = "vision_kit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
